@@ -1,0 +1,13 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+#root {
+  background-color: rgb(94, 230, 81);
+}
+
+body {
+  background-color: brown;
+}
