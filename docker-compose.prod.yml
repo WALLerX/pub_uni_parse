@@ -1,0 +1,40 @@
+version: '3.9'
+
+services:
+
+  # parser_avito:
+  #   build:
+  #     target: production
+  #   ports:
+  #     - 8090:8080
+  #   command: npm run start
+
+  # parser_domclick:
+  #   build:
+  #     target: production
+  #   ports:
+  #     - 8091:8080
+  #   command: npm run start
+
+  # parser_cian:
+  #   build:
+  #     target: production
+  #   ports:
+  #     - 8092:8080
+  #   command: npm run start
+
+  # parser_sibdom:
+  #   build:
+  #     target: production
+  #   ports:
+  #     - 8093:8080
+  #   command: npm run start
+
+  web_app:
+    build:
+      target: production
+    environment:
+      - NODE_ENV=production
+    ports:
+      - 8094:8080
+    command: npm run start
