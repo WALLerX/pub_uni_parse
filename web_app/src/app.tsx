@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import ShowAd from "./components/ShowAd";
-import "./styles/app.css";
+import './styles/styles.scss';
+import * as bootstrap from 'bootstrap';
 
 function App() {
   return (

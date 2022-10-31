@@ -15,18 +15,48 @@ module.exports = (process.env.NODE_ENV == "development")? {
     rules: [
       {
         test: /\.tsx$/,
-        exclude: /(node_modules|bower_components)/,
+        exclude: [/node_modules/],
         use: { loader: 'ts-loader' }
       },
       {
         test: /\.css$/,
-        exclude: /(node_modules|bower_components)/,
-        use: ['style-loader', 'css-loader']
+        use: ['style-loader', 'css-loader'],
+        exclude: [/node_modules/],
+      },
+      {
+        test: /\.(scss)$/,
+        use: [
+          {
+            // Adds CSS to the DOM by injecting a `<style>` tag
+            loader: 'style-loader'
+          },
+          {
+            // Interprets `@import` and `url()` like `import/require()` and will resolve them
+            loader: 'css-loader'
+          },
+          {
+            // Loader for webpack to process CSS with PostCSS
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: function () {
+                  return [
+                    require('autoprefixer')
+                  ];
+                }
+              }
+            }
+          },
+          {
+            // Loads a SASS/SCSS file and compiles it to CSS
+            loader: 'sass-loader'
+          }
+        ]
       },
     ]
   }
 }: {
-  entry: "./src/app.tsx",
+  entry: "./build/app.jsx",
   mode: process.env.NODE_ENV,
   output: {
     path: path.resolve(__dirname, './script/'),
@@ -39,13 +69,43 @@ module.exports = (process.env.NODE_ENV == "development")? {
     rules: [
       {
         test: /\.tsx$/,
-        exclude: /(node_modules|bower_components)/,
+        exclude: [/node_modules/],
         use: { loader: 'ts-loader' }
       },
       {
         test: /\.css$/,
-        exclude: /(node_modules|bower_components)/,
-        use: ['style-loader', 'css-loader']
+        use: ['style-loader', 'css-loader'],
+        exclude: [/node_modules/],
+      },
+      {
+        test: /\.(scss)$/,
+        use: [
+          {
+            // Adds CSS to the DOM by injecting a `<style>` tag
+            loader: 'style-loader'
+          },
+          {
+            // Interprets `@import` and `url()` like `import/require()` and will resolve them
+            loader: 'css-loader'
+          },
+          {
+            // Loader for webpack to process CSS with PostCSS
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: function () {
+                  return [
+                    require('autoprefixer')
+                  ];
+                }
+              }
+            }
+          },
+          {
+            // Loads a SASS/SCSS file and compiles it to CSS
+            loader: 'sass-loader'
+          }
+        ]
       },
     ]
   }
