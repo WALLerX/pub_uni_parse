@@ -33,8 +33,7 @@ $offcanvas-box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175);
 // Customize some defaults
 $body-color: #333;
 $body-bg: #fff;
-$border-radius: .4rem;
-$success: #7952b3;
+$light: #e9e9e9;
 
 // Required
 @import "~bootstrap/scss/functions";
@@ -59,10 +58,10 @@ $success: #7952b3;
 @import "~bootstrap/scss/navbar"; // Requires nav
 @import "~bootstrap/scss/card";
 // @import "~bootstrap/scss/breadcrumb";
-// @import "~bootstrap/scss/accordion";
-// @import "~bootstrap/scss/pagination";
+@import "~bootstrap/scss/accordion";
+@import "~bootstrap/scss/pagination";
 // @import "~bootstrap/scss/badge";
-// @import "~bootstrap/scss/alert";
+@import "~bootstrap/scss/alert";
 @import "~bootstrap/scss/progress";
 // @import "~bootstrap/scss/list-group";
 @import "~bootstrap/scss/close";
@@ -87,7 +86,3 @@ $success: #7952b3;
 //
 
 @import "app";
-
-body {
-  padding: 1.5rem;
-}

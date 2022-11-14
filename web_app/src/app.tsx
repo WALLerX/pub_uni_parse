@@ -1,13 +1,20 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import ShowAd from "./components/ShowAd";
+import { createRoot } from 'react-dom/client';
 import './styles/styles.scss';
-import * as bootstrap from 'bootstrap';
+import ShowAdList from "./components/ShowAdList";
+import ShowLeftBar from "./components/ShowLeftBar";
+import 'bootstrap';
 
 function App() {
   return (
-    <ShowAd />
+    <main>  
+      <ShowLeftBar/>
+      <div className="px-3 py-1">
+        <ShowAdList/>
+      </div>   
+    </main>
   );
 };
 
-ReactDOM.render(<App />,document.getElementById('root'));
+const root = createRoot(document.getElementById('root')!);
+root.render(<App />);

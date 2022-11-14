@@ -94,9 +94,6 @@ services:
       target: base
     environment:
       - NODE_ENV=development
-      - MONGODB_CONNSTRING=mongodb://mongodb:27017/uni_parse
-      - MONGODB_USERNAME=MongoUser
-      - MONGODB_PASSWORD=Parasenok225
       - LISTEN_HOST=0.0.0.0
       - LISTEN_PORT=8080
     volumes:
@@ -105,7 +102,26 @@ services:
       - ./web_app/nodemon.json:/home/node/app/nodemon.json
     ports:
       - 8094:8080
-    command: npm run dev   
+    command: npm run dev 
+    
+  get_data_api:
+    image: get_data_api
+    build:
+      context: .
+      dockerfile: ./get_data_api/Dockerfile
+      target: base
+    environment:
+      - MONGODB_CONNSTRING=mongodb://mongodb:27017/uni_parse
+      - MONGODB_USERNAME=MongoUser
+      - MONGODB_PASSWORD=Parasenok225
+      - LISTEN_HOST=0.0.0.0
+      - LISTEN_PORT=8080
+    volumes:
+      - ./get_data_api/src:/home/node/app/src
+      - ./get_data_api/nodemon.json:/home/node/app/nodemon.json
+    ports:
+      - 8095:8080
+    command: npm run dev     
 
   mongodb:
     container_name: uni-parse-mongodb

@@ -38,3 +38,10 @@ services:
     ports:
       - 8094:8080
     command: npm run start
+
+  get_data_api:
+    build:
+      target: production
+    ports:
+      - 8095:8080
+    command: npm run start

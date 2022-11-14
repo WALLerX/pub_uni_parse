@@ -1,11 +1,5 @@
-import { connect } from 'mongoose';
 import express from 'express';
 import path from 'path';
-
-connect(process.env.MONGODB_CONNSTRING as string,
-        {authSource: "admin",
-        user: process.env.MONGODB_USERNAME as string,
-        pass: process.env.MONGODB_PASSWORD as string}); 
 
 const expressApp = express();
 expressApp.use(express.static(path.join(__dirname, '../public/')));
