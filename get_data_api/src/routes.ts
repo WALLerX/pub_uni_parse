@@ -11,5 +11,6 @@ let allowCrossDomain = function(req: any, res: any, next: any) {
 router.use(allowCrossDomain);
 
 router.route('/api').get(controller.getAction);
+router.route('/xlsx').get(controller.getActionXLSX);
 
 export default router;

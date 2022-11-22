@@ -9,9 +9,7 @@ function App() {
   return (
     <main>  
       <ShowLeftBar/>
-      <div className="px-3 py-1">
-        <ShowAdList/>
-      </div>   
+      <ShowAdList/>
     </main>
   );
 };

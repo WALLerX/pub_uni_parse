@@ -5,9 +5,13 @@ const ShowBuilderList = (props: any) => {
   const [error, setError] = useState<any>(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
-  console.log(window.location.host.replace(/^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}).*/,"$1"));
+  
+  const filter_state = props.current_filter_state;
+
+  console.log(props.current_filter_state);
+
   useEffect(() => {
-    fetch(`http://${window.location.host.replace(/^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}).*/,"$1")}:8095/api?action=get_developers`)
+    fetch(`http://${window.location.host.replace(/^(\S+):.*/,"$1")}:8095/api?action=get_developers`)
       .then(res => res.json())
       .then(
         (result) => {
@@ -19,7 +23,7 @@ const ShowBuilderList = (props: any) => {
           setError(error);
         }
       )
-  }, [])
+  }, [filter_state])
   
   let i = 0;
   

@@ -10,18 +10,29 @@ class ParseService {
       if(args.length > 0) {
         const action = args[0];
         const source_re = new RegExp(`^(${args[1].replace(/,/g,"|")})$`);
-        const limit = parseInt(args[2]);
-        const offset = parseInt(args[3]);
+        const limit = parseInt(args[3]);
+        const offset = parseInt(args[4]);
+        const developers = args[2];
 
-        //console.log(source_re);
+       // console.log(developers);
 
         if(action == "get_developers") {          
           result = adMongoModel.find({'ad_data.ad_tag': source_re},{developer:1}).sort({'developer':-1}).distinct("developer");  
         } else{
           if(limit == -1) {
-            result = adMongoModel.find({'ad_data.ad_tag': source_re}).sort({'ad_data.ad_update_time':-1}).skip(offset);   
+            if(developers.length > 0) {
+              const developers_re = new RegExp(`^(${developers.replace(/,/g,"|")})$`);
+              result = adMongoModel.find({'developer': developers_re,'ad_data.ad_tag': source_re}).sort({'ad_data.ad_update_time':-1}).skip(offset); 
+            } else {
+              result = adMongoModel.find({'ad_data.ad_tag': source_re}).sort({'ad_data.ad_update_time':-1}).skip(offset);   
+            }
           } else {
-            result = adMongoModel.find({'ad_data.ad_tag': source_re}).sort({'ad_data.ad_update_time':-1}).skip(offset).limit(limit);   
+            if(developers.length > 0) {
+              const developers_re = new RegExp(`^(${developers.replace(/,/g,"|")})$`);
+              result = adMongoModel.find({'developer': developers_re,'ad_data.ad_tag': source_re}).sort({'ad_data.ad_update_time':-1}).skip(offset).limit(limit);  
+            } else {
+              result = adMongoModel.find({'ad_data.ad_tag': source_re}).sort({'ad_data.ad_update_time':-1}).skip(offset).limit(limit); 
+            }  
           }
         } 
       } else {

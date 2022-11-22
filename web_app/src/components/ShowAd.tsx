@@ -1,9 +1,9 @@
-import React from "react"
+import React, { useState } from "react"
 
 const ShowAd = (props: any) => {
   return (
     <div>
-      asdaSDDSASD
+      {props.name}
     </div>
   )
 };

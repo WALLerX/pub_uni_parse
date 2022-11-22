@@ -1,8 +1,15 @@
-import React from "react"
+import React, { useState } from "react"
 import ShowBuilderList from "./ShowBuilderList";
 import ShowSourceList from "./ShowSourceList";
 
 const ShowLeftBar = (props: any) => {
+  
+  const [filter_buiders, update_builders] = useState('');
+     
+  function update_filter() {
+    update_builders("1");
+  }
+
   return (
     <div className="d-flex flex-column flex-shrink-0 p-3 bg-light shadow-left" style={{width:"350px"}}>
       <span className="fs-5">Выгрузка данных</span>
@@ -28,14 +35,14 @@ const ShowLeftBar = (props: any) => {
           </h2>
           <div id="flush-collapse2" className="accordion-collapse collapse" aria-labelledby="flush-heading2" data-bs-parent="#accordionFlush">
             <div className="accordion-body">
-              <ShowBuilderList />
+              <ShowBuilderList current_filter_state={filter_buiders} />
             </div>
           </div>
         </div>
       </div>
 
       <div className="text-center">
-        <button type="button" className="btn btn-success">Выгрузить в Excel</button>
+        <button type="button" className="btn btn-success" onClick={update_filter}>Выгрузить в Excel</button>
       </div>
 
       <hr />
