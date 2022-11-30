@@ -1,17 +1,20 @@
-import React, { useState } from "react"
+import React, { useEffect } from "react"
 import ShowBuilderList from "./ShowBuilderList";
+import ShowDownloadButton from "./ShowDownloadButton";
 import ShowSourceList from "./ShowSourceList";
 
 const ShowLeftBar = (props: any) => {
   
-  const [filter_buiders, update_builders] = useState('');
-     
-  function update_filter() {
-    update_builders("1");
+  function selectSources() {
+    props.selectSources(["avito","cian"]);
   }
+  
+  useEffect(() => {
+
+  }, []);
 
   return (
-    <div className="d-flex flex-column flex-shrink-0 p-3 bg-light shadow-left" style={{width:"350px"}}>
+    <div className="d-flex flex-column flex-shrink-0 p-3 bg-light" style={{width:"350px"}}>
       <span className="fs-5">Выгрузка данных</span>
       
       <div className="accordion accordion-flush flex-column mb-auto" id="accordionFlush">
@@ -35,15 +38,17 @@ const ShowLeftBar = (props: any) => {
           </h2>
           <div id="flush-collapse2" className="accordion-collapse collapse" aria-labelledby="flush-heading2" data-bs-parent="#accordionFlush">
             <div className="accordion-body">
-              <ShowBuilderList current_filter_state={filter_buiders} />
+              <ShowBuilderList />
             </div>
           </div>
         </div>
       </div>
 
-      <div className="text-center">
-        <button type="button" className="btn btn-success" onClick={update_filter}>Выгрузить в Excel</button>
+      <div className="text-center d-grid gap-2">
+        <ShowDownloadButton />
       </div>
+
+      {/*<button onClick={selectSources}>test</button>*/}
 
       <hr />
 

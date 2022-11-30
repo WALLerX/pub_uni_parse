@@ -39,7 +39,7 @@ class ParseService {
         result = adMongoModel.find({}).sort({'ad_data.ad_update_time':-1});
       }       
       result = await result.exec();
-      
+
       if(result) {
         res(result);
       } else {        

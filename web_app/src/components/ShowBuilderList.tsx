@@ -6,10 +6,6 @@ const ShowBuilderList = (props: any) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
   
-  const filter_state = props.current_filter_state;
-
-  console.log(props.current_filter_state);
-
   useEffect(() => {
     fetch(`http://${window.location.host.replace(/^(\S+):.*/,"$1")}:8095/api?action=get_developers`)
       .then(res => res.json())
@@ -23,7 +19,7 @@ const ShowBuilderList = (props: any) => {
           setError(error);
         }
       )
-  }, [filter_state])
+  }, [])
   
   let i = 0;
   

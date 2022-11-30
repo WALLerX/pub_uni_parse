@@ -1,15 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { createRoot } from 'react-dom/client';
 import './styles/styles.scss';
-import ShowAdList from "./components/ShowAdList";
+import ShowAdListTable from "./components/ShowAdListTable";
 import ShowLeftBar from "./components/ShowLeftBar";
 import 'bootstrap';
 
+/*const useExternalHookAsState = (defaultHookState: any) => {
+  const [sendMessage, setMessage] = useState(defaultHookState);
+
+  const updateMessage = (e: Event, newMessage: any) => {
+    e.preventDefault(); 
+    setMessage("newMessage");
+  }
+
+  return [sendMessage, updateMessage];
+};*/
+
 function App() {
+  const [selectedSources, useSourcesState] = useState([]);
+
   return (
-    <main>  
-      <ShowLeftBar/>
-      <ShowAdList/>
+    <main>
+      <ShowLeftBar selectedSources={selectedSources} selectSources={useSourcesState}/>
+      <ShowAdListTable selectedSources={selectedSources} selectSources={useSourcesState}/>
     </main>
   );
 };

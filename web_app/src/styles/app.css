@@ -23,3 +23,10 @@ main {
   max-height: 300px !important;
   height: 100% !important;
 }
+
+.table-fix-head { 
+  overflow: auto; height: 100px; 
+}
+.table-fix-head thead th {
+  position: sticky; top: 0; z-index: 1; 
+}

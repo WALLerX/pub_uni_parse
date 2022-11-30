@@ -1,5 +1,6 @@
 import adMongoModel from '../ad.mongo.model';
 import * as XLSX from 'xlsx';
+import moment from 'moment';
 
 class ParseService {
   
@@ -60,11 +61,20 @@ class ParseService {
             "Жилая площадь",
             "Площадь кухни",
             "Телефон",
-            "Контактное лицо"
+            "Контактное лицо",
+            "Дата загрузки",
+            "Источник"
           ]];
 
-          let i = 1; 
-           
+          let i = 0;
+          let col_sizes = Array();
+
+          data_array[0].map((item: any) => {
+            col_sizes[i] = { wch:(item.length+4) };
+            i++;
+          });
+          
+          i = 1;
           result.map((item: any) => {
             data_array[i] = [
               item.city_area, //Район города
@@ -82,12 +92,15 @@ class ParseService {
               item.living_space, //Жилая площадь
               item.kitchen_area, //Площадь кухни
               item.phone_number, //Телефон
-              item.contact //Контактное лицо (Имя или организация)
+              item.contact, //Контактное лицо (Имя или организация)
+              moment(item.ad_data.ad_update_time).format('YYYY-MM-DD HH:mm:ss'),
+              item.ad_data.ad_tag
             ];
             i++;
           });
 
           const wh = XLSX.utils.aoa_to_sheet(data_array);
+          wh['!cols'] = col_sizes;
           XLSX.utils.book_append_sheet(wb, wh, "Объявления", true);
 
           const fileBuffer = await XLSX.write(wb, { type: "base64" });

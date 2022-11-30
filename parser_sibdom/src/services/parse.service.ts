@@ -402,7 +402,7 @@ class ParseService {
         const kitchen_area = (list_about.indexOf('Площадь кухни') > -1)?(await page.$$eval('div[class="card-info-content"]', el => el.map(e => e.innerHTML.replace(/^\s*(\S.*\S)\s*$/,'$1').replace(/м²/,'').replace(/[^\d\.]/g,''))))[list_about.indexOf('Площадь кухни')]:'';
         
         let contact: string; try { contact = await page.$eval('div[class="card-feedback-contacts"] > a', e => e.innerHTML.replace(/^\s*(\S.*\S)\s*<span[\.\n\S\s]*$/gm,'$1').replace(/^\s*(\S.*\S)\s*$/,'$1').trim()); } catch { contact = ''; } 
-        let price: any; try { price = await page.$eval('div[card-banner-price--full', e => e.innerHTML.replace(/&nbsp;/g,' ').replace(/(₽|\s)/g,'')); } catch { price = ''; }
+        let price: any; try { price = await page.$eval('[class="card-banner-price--full"]', e => e.innerHTML.replace(/&nbsp;/g,' ').replace(/(₽|\s)/g,'')); } catch { price = ''; }
 
         await page.waitForSelector('div[class="card-feedback-phone"] > span');
         await page.focus('div[class="card-feedback-phone"] > span');
@@ -412,6 +412,8 @@ class ParseService {
         let phone_number: any;  
         try { 
           phone_number = await page.$eval('div[class="card-feedback-phone"] > span > a', (e: any) => e.getAttribute('href').toString().replace(/[^\d]/g,'').replace(/tel:8/,'7').replace(/tel:\+(.*)/,'$1').replace(/^(\d+).*$/,'$1').replace(/^8/,'7')); 
+          if(phone_number.length > 11) phone_number = phone_number.replace(/^.*(\d{10})$/,"7$1");
+          if(phone_number.length == 8) phone_number = phone_number.replace(/^7(\d+)$/,"7391$1");          
         } catch { 
           phone_number = '';
         }          

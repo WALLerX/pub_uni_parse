@@ -59,7 +59,7 @@ class Controller {
         .status(200)
         .writeHead(200, {
           'Content-Type': 'application/vnd.ms-excel',
-          'Content-Disposition': 'attachment; filename="filename.xlsx"'
+          'Content-Disposition': 'attachment; filename="Obyavleniya_nedvigimost.xlsx"'
         })
         .end(Buffer.from(data.toString('utf-8'), 'base64'));
     else
