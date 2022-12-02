@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import ShowApplyButton from "./ShowApplyButton";
 import ShowBuilderList from "./ShowBuilderList";
+import ShowBuilderUpdateCheckAll from "./ShowBuilderUpdateCheckAll";
 import ShowDownloadButton from "./ShowDownloadButton";
 import ShowSelectUnselectAllChekbox from "./ShowSelectUnselectAllChekbox";
 import ShowSourceList from "./ShowSourceList";
@@ -8,6 +9,7 @@ import ShowSourceList from "./ShowSourceList";
 const ShowLeftBar = (props: any) => {
   
   const [applyButtonDisabled, setApplyButtonDisabled] = useState(true);
+  const [checkAllDevelopers, setCheckAllDevelopers] = useState(true);
   
   function disableApplyButton() {
     setApplyButtonDisabled(true);
@@ -44,7 +46,8 @@ const ShowLeftBar = (props: any) => {
           </h2>
           <div id="flush-collapse2" className="accordion-collapse collapse" aria-labelledby="flush-heading2" data-bs-parent="#accordionFlush">
             <div className="accordion-body">
-              <ShowSelectUnselectAllChekbox id={"select_all_checkbox"} />
+              <ShowSelectUnselectAllChekbox id={"select_all_checkbox"} checkAllDevelopers={checkAllDevelopers} setCheckAllDevelopers={setCheckAllDevelopers} applyButtonDisabled={applyButtonDisabled} setApplyButtonDisabled={setApplyButtonDisabled}/>
+              <ShowBuilderUpdateCheckAll checkAllDevelopers={checkAllDevelopers} setCheckAllDevelopers={setCheckAllDevelopers}/>
               <hr/>
               <ShowBuilderList {...props} applyButtonDisabled={applyButtonDisabled} setApplyButtonDisabled={setApplyButtonDisabled} />
               <hr/>

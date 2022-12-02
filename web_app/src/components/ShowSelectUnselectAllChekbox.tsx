@@ -7,8 +7,11 @@ const ShowSelectUnselectAllChekbox = (props: any) => {
   function select_unselect_all(e: React.ChangeEvent<HTMLInputElement>) {
     if(e.target.checked) {
       changeSelectAllTextState("Снять выделение со всех");
+      props.setCheckAllDevelopers(true);
+      props.setApplyButtonDisabled(false);
     } else {
       changeSelectAllTextState("Выделить все");
+      props.setCheckAllDevelopers(false);
     }
   };
   
