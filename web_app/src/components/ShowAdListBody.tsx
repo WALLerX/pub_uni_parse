@@ -6,36 +6,65 @@ const ShowAdList = (props: any) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
   
-  let sources_query: string;
-
+  let sources_query: string = "";
+  let developers_query: string = "";
 
   useEffect(() => {
-    const list_sources = Array.from(
-      document.querySelectorAll('input[data-type="source_checkbox"]')
-    );
+    if(props.loaderAction[0] == 'from_sources' || props.loaderAction[0] == 'from_developers') {
+      const list_sources = Array.from(
+        document.querySelectorAll('input[data-type="source_checkbox"]')
+      );
+  
+      let i = 0;
+      let checked_sources_array = Array();
 
-    let i = 0;
-    let checked_array = Array();
-
-    list_sources.map(
-      (element: any)=>{        
-        if(element.checked) {
-          checked_array[i] = element.dataset.query;
-          i++;
+      list_sources.map(
+        (element: any) => {        
+          if(element.checked) {
+            checked_sources_array[i] = element.dataset.query;
+            i++;
+          }
         }
+      );
+
+      if(checked_sources_array.length > 0) {
+        sources_query = `&source=${encodeURI(checked_sources_array.toString())}`;        
+        setIsLoaded(false);
+      } else {
+        sources_query = "";
       }
-    );
-    
-    console.log(checked_array);
+    }
 
-    if(props.selectedSources.length > 0) {
-      sources_query = `&source=${encodeURI(props.selectedSources.toString())}`;
-      setIsLoaded(false);
-    } else {
-      sources_query = "";
-    }  
+    if(props.loaderAction[0] == 'from_developers') {
+      const list_developers = Array.from(
+        document.querySelectorAll('input[id^="flexCheckBuider"]')
+      );
+  
+      let i = 0;
+      let checked_developers_array = Array();
+      list_developers.map(
+        (element: any) => {        
+          if(element.checked) {
+            checked_developers_array[i] = element.dataset.query;
+            i++;
+          }
+        }
+      );
 
-    fetch(`http://${window.location.host.replace(/^(\S+):.*/,"$1")}:8095/api?action=get_data${sources_query}`)
+      if(checked_developers_array.length > 0) {
+        if(checked_developers_array.toString().length == 0) {
+          developers_query = `&developers=${encodeURI(",")}`;
+        } else {
+          developers_query = `&developers=${encodeURI(checked_developers_array.toString())}`;
+        }
+
+        setIsLoaded(false);
+      } else {
+        developers_query = "";
+      }
+    }
+
+    fetch(`http://${window.location.host.replace(/^(\S+):.*/,"$1")}:8095/api?action=get_data${sources_query}${developers_query}`)
       .then(res => res.json())
       .then(
         (result) => {
@@ -47,7 +76,7 @@ const ShowAdList = (props: any) => {
           setError(error);
         }
       )
-  }, [props.selectedSources])
+  }, [props.loaderAction])
   
   let i = 0;
   
@@ -59,7 +88,7 @@ const ShowAdList = (props: any) => {
     return (
       <tbody className="table-bordered">
         {items.map((item: any) => ( 
-          <ShowAd key={i++} num={i} id={"flexCheckBuider"+i} item={item} />            
+          <ShowAd key={i++} num={i} item={item} />            
         ))}
       </tbody> 
     );    
