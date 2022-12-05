@@ -135,6 +135,9 @@ class ParseService {
 
         let num_of_pages = await this.calculate_total_ads_count_and_num_of_pages(browser, req);
 
+        console.log(`Deleting no relevance ads...`);
+        const del_result = await adMongoModel.deleteMany({ relevance: false, 'ad_data.ad_tag': 'cian' });
+
         if(!req.query.relevance || req.query.relevance == "false") {
           await adMongoModel.updateMany({ 'ad_data.ad_tag': 'domclick' }, { relevance: false });
         } else if(req.query.relevance == "true") {
@@ -228,8 +231,6 @@ class ParseService {
         const result = num_of_pages;
 
         if(result) {
-          console.log(`Deleting no relevance ads...`);
-          const del_result = await adMongoModel.deleteMany({ relevance: false, 'ad_data.ad_tag': 'cian' });
           console.log(`DONE!`);
           res({result});
         } else {

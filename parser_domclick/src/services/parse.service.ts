@@ -83,7 +83,7 @@ class ParseService {
               '--no-sandbox', 
               '--user-data-dir=/home/node/app/.config/google-chrome', 
               '--disable-blink-features=AutomationControlled',
-              '--proxy-server=socks5://45.185.6.35:7497'
+       //       '--proxy-server=socks5://45.185.6.35:7497'
        //       `--proxy-server=${proxy[0].Type[0].toLowerCase()}://${proxy[0].Ip}:${proxy[0].Port}`
             ],
             executablePath: '/usr/bin/google-chrome',
@@ -112,7 +112,7 @@ class ParseService {
 
           console.log("Goto sorted page...");     
           try {
-            throw 'error';
+           // throw 'error';
             await page.waitForSelector('nav[aria-label="Навигация второго уровня"] > div:nth-child(4) > div > div > span');
 
             console.log("Goto menu...");
@@ -142,6 +142,9 @@ class ParseService {
           }
 
           let num_of_pages = await this.calculate_total_ads_count_and_num_of_pages(browser, req);
+
+          console.log(`Deleting no relevance ads...`);
+          const del_result = await adMongoModel.deleteMany({ relevance: false, 'ad_data.ad_tag': 'domclick' });
 
           if(!req.query.relevance || req.query.relevance == "false") {
             await adMongoModel.updateMany({ 'ad_data.ad_tag': 'domclick' }, { relevance: false });
@@ -305,8 +308,6 @@ class ParseService {
           const result = num_of_pages;
 
           if(result) {
-            console.log(`Deleting no relevance ads...`);
-            const del_result = await adMongoModel.deleteMany({ relevance: false, 'ad_data.ad_tag': 'domclick' });
             console.log(`DONE!`);
             res({result});
           } else {            

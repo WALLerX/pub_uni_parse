@@ -3,6 +3,7 @@ import moment from 'moment';
 
 
 const ShowAd = (props: any) => {
+  const relevance_str = (props.item.relevance == true)?"Да":"Нет";
   return (
     <tr>
       <td scope="col">{props.num}</td>
@@ -24,6 +25,7 @@ const ShowAd = (props: any) => {
       <td scope="col">{props.item.contact}</td>
       <td scope="col">{moment(props.item.ad_data.ad_update_time).format('YYYY-MM-DD HH:mm:ss')}</td>
       <td scope="col">{props.item.ad_data.ad_tag}</td>
+      <td scope="col">{relevance_str}</td>
     </tr>
   )
 };

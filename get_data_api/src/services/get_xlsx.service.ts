@@ -63,7 +63,8 @@ class ParseService {
             "Телефон",
             "Контактное лицо",
             "Дата загрузки",
-            "Источник"
+            "Источник",
+            "Актуальность (опубликовано)"
           ]];
 
           let i = 0;
@@ -76,6 +77,7 @@ class ParseService {
           
           i = 1;
           result.map((item: any) => {
+            const relevance_str = (item.relevance == true)?"Да":"Нет";
             data_array[i] = [
               item.city_area, //Район города
               item.housing_complex_name, //Название ЖК
@@ -94,7 +96,8 @@ class ParseService {
               item.phone_number, //Телефон
               item.contact, //Контактное лицо (Имя или организация)
               moment(item.ad_data.ad_update_time).format('YYYY-MM-DD HH:mm:ss'),
-              item.ad_data.ad_tag
+              item.ad_data.ad_tag,
+              relevance_str
             ];
             i++;
           });

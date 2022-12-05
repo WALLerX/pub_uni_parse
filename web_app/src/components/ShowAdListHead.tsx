@@ -23,6 +23,7 @@ const ShowAdListHead = (props: any) => {
         <th scope="col">Контактное лицо</th>
         <th scope="col">Дата обновления</th>
         <th scope="col">Источник</th>
+        <th scope="col">Актуальность (опубликовано)</th>
       </tr>
     </thead>
   )

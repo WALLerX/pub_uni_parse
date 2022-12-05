@@ -58,7 +58,7 @@ const ShowLeftBar = (props: any) => {
       </div>
 
       <div className="text-center d-grid gap-2">
-        <ShowDownloadButton />
+        <ShowDownloadButton {...props} />
       </div>
 
       <hr />

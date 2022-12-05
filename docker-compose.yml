@@ -2,89 +2,89 @@ version: '3.9'
 
 services:
 
-  # parser_avito:
-  #   image: parser_avito
-  #   build:
-  #     context: .
-  #     dockerfile: ./parser_avito/Dockerfile
-  #     target: base
-  #   environment:
-  #     - MONGODB_CONNSTRING=mongodb://mongodb:27017/uni_parse
-  #     - MONGODB_USERNAME=MongoUser
-  #     - MONGODB_PASSWORD=Parasenok225
-  #     - LISTEN_HOST=0.0.0.0
-  #     - LISTEN_PORT=8080
-  #     - NUM_RETRIES=3
-  #   volumes:
-  #     - ./parser_avito/src:/home/node/app/src
-  #     - ./parser_avito/nodemon.json:/home/node/app/nodemon.json
-  #     - chrome-data-volume-avito:/home/node/app/.config/google-chrome
-  #   ports:
-  #     - 8090:8080
-  #   command: npm run dev
+  parser_avito:
+    image: parser_avito
+    build:
+      context: .
+      dockerfile: ./parser_avito/Dockerfile
+      target: base
+    environment:
+      - MONGODB_CONNSTRING=mongodb://mongodb:27017/uni_parse
+      - MONGODB_USERNAME=MongoUser
+      - MONGODB_PASSWORD=Parasenok225
+      - LISTEN_HOST=0.0.0.0
+      - LISTEN_PORT=8080
+      - NUM_RETRIES=3
+    volumes:
+      - ./parser_avito/src:/home/node/app/src
+      - ./parser_avito/nodemon.json:/home/node/app/nodemon.json
+      - chrome-data-volume-avito:/home/node/app/.config/google-chrome
+    ports:
+      - 8090:8080
+    command: npm run dev
 
-  # parser_domclick:
-  #   image: parser_domclick
-  #   build:
-  #     context: .
-  #     dockerfile: ./parser_domclick/Dockerfile
-  #     target: base
-  #   environment:
-  #     - MONGODB_CONNSTRING=mongodb://mongodb:27017/uni_parse
-  #     - MONGODB_USERNAME=MongoUser
-  #     - MONGODB_PASSWORD=Parasenok225
-  #     - LISTEN_HOST=0.0.0.0
-  #     - LISTEN_PORT=8080
-  #     - NUM_RETRIES=5
-  #   volumes:
-  #     - ./parser_domclick/src:/home/node/app/src
-  #     - ./parser_domclick/nodemon.json:/home/node/app/nodemon.json
-  #     - chrome-data-volume-domclick:/home/node/app/.config/google-chrome
-  #   ports:
-  #     - 8091:8080
-  #   command: npm run dev
+  parser_domclick:
+    image: parser_domclick
+    build:
+      context: .
+      dockerfile: ./parser_domclick/Dockerfile
+      target: base
+    environment:
+      - MONGODB_CONNSTRING=mongodb://mongodb:27017/uni_parse
+      - MONGODB_USERNAME=MongoUser
+      - MONGODB_PASSWORD=Parasenok225
+      - LISTEN_HOST=0.0.0.0
+      - LISTEN_PORT=8080
+      - NUM_RETRIES=5
+    volumes:
+      - ./parser_domclick/src:/home/node/app/src
+      - ./parser_domclick/nodemon.json:/home/node/app/nodemon.json
+      - chrome-data-volume-domclick:/home/node/app/.config/google-chrome
+    ports:
+      - 8091:8080
+    command: npm run dev
 
-  # parser_cian:
-  #   image: parser_cian
-  #   build:
-  #     context: .
-  #     dockerfile: ./parser_cian/Dockerfile
-  #     target: base
-  #   environment:
-  #     - MONGODB_CONNSTRING=mongodb://mongodb:27017/uni_parse
-  #     - MONGODB_USERNAME=MongoUser
-  #     - MONGODB_PASSWORD=Parasenok225
-  #     - LISTEN_HOST=0.0.0.0
-  #     - LISTEN_PORT=8080
-  #     - NUM_RETRIES=3
-  #   volumes:
-  #     - ./parser_cian/src:/home/node/app/src
-  #     - ./parser_cian/nodemon.json:/home/node/app/nodemon.json
-  #     - chrome-data-volume-cian:/home/node/app/.config/google-chrome
-  #   ports:
-  #     - 8092:8080
-  #   command: npm run dev 
+  parser_cian:
+    image: parser_cian
+    build:
+      context: .
+      dockerfile: ./parser_cian/Dockerfile
+      target: base
+    environment:
+      - MONGODB_CONNSTRING=mongodb://mongodb:27017/uni_parse
+      - MONGODB_USERNAME=MongoUser
+      - MONGODB_PASSWORD=Parasenok225
+      - LISTEN_HOST=0.0.0.0
+      - LISTEN_PORT=8080
+      - NUM_RETRIES=3
+    volumes:
+      - ./parser_cian/src:/home/node/app/src
+      - ./parser_cian/nodemon.json:/home/node/app/nodemon.json
+      - chrome-data-volume-cian:/home/node/app/.config/google-chrome
+    ports:
+      - 8092:8080
+    command: npm run dev 
     
-  # parser_sibdom:
-  #   image: parser_sibdom
-  #   build:
-  #     context: .
-  #     dockerfile: ./parser_sibdom/Dockerfile
-  #     target: base
-  #   environment:
-  #     - MONGODB_CONNSTRING=mongodb://mongodb:27017/uni_parse
-  #     - MONGODB_USERNAME=MongoUser
-  #     - MONGODB_PASSWORD=Parasenok225
-  #     - LISTEN_HOST=0.0.0.0
-  #     - LISTEN_PORT=8080
-  #     - NUM_RETRIES=3
-  #   volumes:
-  #     - ./parser_sibdom/src:/home/node/app/src
-  #     - ./parser_sibdom/nodemon.json:/home/node/app/nodemon.json
-  #     - chrome-data-volume-sibdom:/home/node/app/.config/google-chrome
-  #   ports:
-  #     - 8093:8080
-  #   command: npm run dev
+  parser_sibdom:
+    image: parser_sibdom
+    build:
+      context: .
+      dockerfile: ./parser_sibdom/Dockerfile
+      target: base
+    environment:
+      - MONGODB_CONNSTRING=mongodb://mongodb:27017/uni_parse
+      - MONGODB_USERNAME=MongoUser
+      - MONGODB_PASSWORD=Parasenok225
+      - LISTEN_HOST=0.0.0.0
+      - LISTEN_PORT=8080
+      - NUM_RETRIES=3
+    volumes:
+      - ./parser_sibdom/src:/home/node/app/src
+      - ./parser_sibdom/nodemon.json:/home/node/app/nodemon.json
+      - chrome-data-volume-sibdom:/home/node/app/.config/google-chrome
+    ports:
+      - 8093:8080
+    command: npm run dev
 
   web_app:
     image: web_app
