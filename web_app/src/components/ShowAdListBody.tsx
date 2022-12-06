@@ -70,6 +70,7 @@ const ShowAdList = (props: any) => {
         (result) => {
           setIsLoaded(true);
           setItems(result);
+          props.setApplyButtonDisabled(false);
         },
         (error) => {
           setIsLoaded(true);
@@ -83,7 +84,7 @@ const ShowAdList = (props: any) => {
   if (error) {
     return <tbody><tr><td><div className="px-3">Ошибка: {error.message}</div></td></tr></tbody>;
   } else if (!isLoaded) {
-    return <tbody><tr><td><div className="px-3">Загрузка...</div></td></tr></tbody>;
+    return <tbody><tr><td colSpan={20}><div className="fs-5 px-3">Загрузка данных...</div></td></tr></tbody>;
   } else {
     return (
       <tbody className="table-bordered">

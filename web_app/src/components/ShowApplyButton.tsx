@@ -8,7 +8,10 @@ const ShowApplyButton = (props: any) => {
     props.setApplyButtonDisabled(true);
   };
   
-  return <button type="button" className="btn btn-primary" onClick={apply} disabled={props.applyButtonDisabled}>Применить фильтр</button>;
+  const button_class = (props.applyButtonDisabled)?"btn btn-secondary":"btn btn-primary";
+  const button_text= (props.applyButtonDisabled)?"Обновление...":"Обновить";
+
+  return <button type="button" className={button_class} onClick={apply} disabled={props.applyButtonDisabled}>{button_text}</button>;
 
 };
 

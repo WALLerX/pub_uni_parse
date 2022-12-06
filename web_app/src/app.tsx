@@ -7,11 +7,12 @@ import 'bootstrap';
 
 function App() {
   const [loaderAction, useLoaderState] = useState(['from_load','']);
+  const [applyButtonDisabled, setApplyButtonDisabled] = useState(true);
 
   return (
     <main>
-      <ShowLeftBar loaderAction={loaderAction} useLoaderState={useLoaderState}/>
-      <ShowAdListTable loaderAction={loaderAction} useLoaderState={useLoaderState}/>
+      <ShowLeftBar loaderAction={loaderAction} useLoaderState={useLoaderState} applyButtonDisabled={applyButtonDisabled} setApplyButtonDisabled={setApplyButtonDisabled} />
+      <ShowAdListTable loaderAction={loaderAction} useLoaderState={useLoaderState} applyButtonDisabled={applyButtonDisabled} setApplyButtonDisabled={setApplyButtonDisabled} />
     </main>
   );
 };

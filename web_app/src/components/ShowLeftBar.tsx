@@ -7,9 +7,8 @@ import ShowDownloadButton from "./ShowDownloadButton";
 import ShowSelectUnselectAllChekbox from "./ShowSelectUnselectAllChekbox";
 import ShowSourceList from "./ShowSourceList";
 
-const ShowLeftBar = (props: any) => {
+const ShowLeftBar = (props: any) => {  
   
-  const [applyButtonDisabled, setApplyButtonDisabled] = useState(true);
   const [checkAllDevelopers, setCheckAllDevelopers] = useState(true);
 
   return (
@@ -25,7 +24,7 @@ const ShowLeftBar = (props: any) => {
           </h2>
           <div id="flush-collapse1" className="accordion-collapse collapse" aria-labelledby="flush-heading1" data-bs-parent="#accordionFlush">
             <div className="accordion-body">
-              <ShowSourceList {...props} applyButtonDisabled={applyButtonDisabled} setApplyButtonDisabled={setApplyButtonDisabled}/>
+              <ShowSourceList {...props} />
             </div>
           </div>
         </div>
@@ -37,17 +36,17 @@ const ShowLeftBar = (props: any) => {
           </h2>
           <div id="flush-collapse2" className="accordion-collapse collapse" aria-labelledby="flush-heading2" data-bs-parent="#accordionFlush">
             <div className="accordion-body">
-              <ShowSelectUnselectAllChekbox id={"select_all_checkbox"} checkAllDevelopers={checkAllDevelopers} setCheckAllDevelopers={setCheckAllDevelopers} applyButtonDisabled={applyButtonDisabled} setApplyButtonDisabled={setApplyButtonDisabled}/>
+              <ShowSelectUnselectAllChekbox id={"select_all_checkbox"} checkAllDevelopers={checkAllDevelopers} setCheckAllDevelopers={setCheckAllDevelopers} />
               <ShowBuilderUpdateCheckAll checkAllDevelopers={checkAllDevelopers} setCheckAllDevelopers={setCheckAllDevelopers}/>
               <hr/>
-              <ShowBuilderList {...props} applyButtonDisabled={applyButtonDisabled} setApplyButtonDisabled={setApplyButtonDisabled} />
+              <ShowBuilderList {...props} />
             </div>
           </div>
         </div>
       </div>
 
       <div className="text-center d-grid gap-2">
-        <ShowApplyButton {...props} applyButtonDisabled={applyButtonDisabled} setApplyButtonDisabled={setApplyButtonDisabled} from_action={"from_developers"} />
+        <ShowApplyButton {...props} from_action={"from_developers"} />
       </div> 
       
       <hr />
