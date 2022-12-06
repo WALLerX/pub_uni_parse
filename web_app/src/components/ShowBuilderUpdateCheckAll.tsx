@@ -6,8 +6,6 @@ const ShowBuilderUpdateCheckAll = (props: any) => {
       document.querySelectorAll('input[id^="flexCheckBuider"]')
     );
 
-    console.log(props.checkAllDevelopers);
-
     list_developers.map(
       (element: any) => {        
         if(element.defaultChecked) {

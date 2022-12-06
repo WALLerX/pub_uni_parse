@@ -5,9 +5,10 @@ const ShowApplyButton = (props: any) => {
   function apply() {    
     var date = new Date();
     props.useLoaderState([props.from_action,date.getMilliseconds()]);
+    props.setApplyButtonDisabled(true);
   };
   
-  return <button type="button" className="btn btn-sm btn-primary" onClick={apply} disabled={props.applyButtonDisabled}>Применить</button>;
+  return <button type="button" className="btn btn-primary" onClick={apply} disabled={props.applyButtonDisabled}>Применить фильтр</button>;
 
 };
 
