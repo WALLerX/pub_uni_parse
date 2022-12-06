@@ -103,7 +103,7 @@ services:
     ports:
       - 8094:8080
     command: npm run dev 
-    
+
   get_data_api:
     image: get_data_api
     build:
@@ -121,7 +121,19 @@ services:
       - ./get_data_api/nodemon.json:/home/node/app/nodemon.json
     ports:
       - 8095:8080
-    command: npm run dev     
+    command: npm run dev       
+
+  scheduler:
+    image: scheduler
+    build:
+      context: .
+      dockerfile: ./scheduler/Dockerfile
+    environment:
+      - CRON_AVITO=0 8 * * 6
+      - CRON_CIAN=0 18 * * 6
+      - CRON_SIBDOM=0 4 * * 7
+      - CRON_DOMCLICK=0 14 * * 7
+    command: bash -c "./cron.sh"
 
   mongodb:
     container_name: uni-parse-mongodb
