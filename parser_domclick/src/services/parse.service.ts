@@ -1,7 +1,6 @@
 import puppeteer, { Puppeteer } from 'puppeteer';
 import moment from 'moment';
 import adMongoModel from '../ad.mongo.model';
-import fetch from 'node-fetch';
 
 class ParseService {
   
