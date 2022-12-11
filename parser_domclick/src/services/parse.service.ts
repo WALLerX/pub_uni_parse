@@ -353,7 +353,7 @@ class ParseService {
 
   parse_page_(page: puppeteer.Page, city_area_complex: string) {
     return new Promise(async (res, rej) => {
-      await (new Promise(r => setTimeout(r, 5000)));
+      await (new Promise(r => setTimeout(r, 10000)));
       try {
         let ad_not_public: any; try { ad_not_public = await page.$eval('p[class="offerStatus_unpublishedText"]', e => e.innerHTML); } catch { ad_not_public = ''; } 
         if(ad_not_public == 'Данное объявление больше не актуально.') {
