@@ -45,6 +45,7 @@ services:
     command: npm run start
 
   get_data_api:
+    restart: always
     build:
       target: production
     ports:
