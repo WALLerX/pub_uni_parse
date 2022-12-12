@@ -23,9 +23,9 @@ const ShowDataLoader = (props: any) => {
     }, 2000);
   }, []);
 
-  const percentCompletedString = (percentCompleted > 0 && percentCompleted != null)?`${(percentCompleted > 100)?100:percentCompleted} %`:"";
+  const percentCompletedString = (percentCompleted > 0 && percentCompleted != null)?`${((percentCompleted > 100) || (statusCompleted == "stopped" && percentCompleted >= 90))?100:percentCompleted} %`:"";
   const progressClassName =  (percentCompleted > 0 && percentCompleted < 100 && statusCompleted == "running")?"progress-bar progress-bar-striped progress-bar-animated":
-  (percentCompleted > 0 && percentCompleted < 100 && statusCompleted == "stopped")?"progress-bar bg-danger":
+  (percentCompleted > 0 && percentCompleted < 90 && statusCompleted == "stopped")?"progress-bar bg-danger":
   "progress-bar bg-success";
 
   return (          
