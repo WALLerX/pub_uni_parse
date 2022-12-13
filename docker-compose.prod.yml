@@ -51,3 +51,9 @@ services:
     ports:
       - 8095:8080
     command: npm run start
+
+  scheduler:
+    restart: always
+
+  mongodb:
+    restart: always
