@@ -69,7 +69,9 @@ const ShowDownloadButton = (props: any) => {
         (data) => {
           const a = document.createElement("a");
           a.href = window.URL.createObjectURL(data);
-          a.download = "Объявления_Недвижимость.xlsx";
+          const date = new Date();
+          const date_str = date.getFullYear()+"."+(date.getMonth()+1).toString().padStart(2, '0')+"."+date.getDate().toString().padStart(2, '0');
+          a.download = `Объявления_Недвижимость_${date_str}.xlsx`;
           a.click();
           a.remove();
 

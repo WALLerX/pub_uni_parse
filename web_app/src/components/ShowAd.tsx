@@ -4,6 +4,8 @@ import moment from 'moment';
 
 const ShowAd = (props: any) => {
   const relevance_str = (props.item.relevance == true)?"Да":"Нет";
+  const price_metr = (parseInt(props.item.price) > 0 && parseInt(props.item.total_area))?Math.ceil(props.item.price/props.item.total_area):'';
+
   return (
     <tr>
       <td scope="col">{props.num}</td>
@@ -20,7 +22,8 @@ const ShowAd = (props: any) => {
       <td scope="col">{props.item.floor}</td>
       <td scope="col">{props.item.total_area}</td>
       <td scope="col">{props.item.living_space}</td>
-      <td scope="col">{props.item.kitchen_area}</td>
+      <td scope="col">{props.item.kitchen_area}</td>      
+      <td scope="col">{price_metr}</td>
       <td scope="col">{props.item.phone_number}</td>
       <td scope="col">{props.item.contact}</td>
       <td scope="col">{moment(props.item.ad_data.ad_update_time).format('YYYY-MM-DD HH:mm:ss')}</td>

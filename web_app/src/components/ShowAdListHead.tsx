@@ -19,6 +19,7 @@ const ShowAdListHead = (props: any) => {
         <th scope="col">Общая площадь</th>
         <th scope="col">Жилая площадь</th>
         <th scope="col">Площадь кухни</th>
+        <th scope="col">Цена за кв. метр</th>
         <th scope="col">Телефон</th>
         <th scope="col">Контактное лицо</th>
         <th scope="col">Дата обновления</th>

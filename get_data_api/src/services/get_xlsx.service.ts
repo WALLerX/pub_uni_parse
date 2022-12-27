@@ -60,6 +60,7 @@ class ParseService {
             "Общая площадь",
             "Жилая площадь",
             "Площадь кухни",
+            "Цена за кв. метр",
             "Телефон",
             "Контактное лицо",
             "Дата загрузки",
@@ -78,6 +79,7 @@ class ParseService {
           i = 1;
           result.map((item: any) => {
             const relevance_str = (item.relevance == true)?"Да":"Нет";
+            const price_metr = (parseInt(item.price) > 0 && parseInt(item.total_area))?Math.ceil(item.price/item.total_area):'';
             data_array[i] = [
               item.city_area, //Район города
               item.housing_complex_name, //Название ЖК
@@ -93,6 +95,7 @@ class ParseService {
               item.total_area, //Общая площадь
               item.living_space, //Жилая площадь
               item.kitchen_area, //Площадь кухни
+              price_metr, //Цена за кв. метр
               item.phone_number, //Телефон
               item.contact, //Контактное лицо (Имя или организация)
               moment(item.ad_data.ad_update_time).format('YYYY-MM-DD HH:mm:ss'),

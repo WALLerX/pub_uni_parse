@@ -55,5 +55,5 @@ services:
   scheduler:
     restart: always
 
-  mongodb:
+  mongodb:    
     restart: always
