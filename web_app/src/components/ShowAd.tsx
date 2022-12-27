@@ -4,7 +4,7 @@ import moment from 'moment';
 
 const ShowAd = (props: any) => {
   const relevance_str = (props.item.relevance == true)?"Да":"Нет";
-  const price_metr = (parseInt(props.item.price) > 0 && parseInt(props.item.total_area))?Math.ceil(props.item.price/props.item.total_area):'';
+  const price_metr = (parseInt(props.item.price) > 0 && parseInt(props.item.total_area))?Math.ceil(props.item.price/props.item.total_area).toString():'';
 
   return (
     <tr>

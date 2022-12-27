@@ -79,7 +79,7 @@ class ParseService {
           i = 1;
           result.map((item: any) => {
             const relevance_str = (item.relevance == true)?"Да":"Нет";
-            const price_metr = (parseInt(item.price) > 0 && parseInt(item.total_area))?Math.ceil(item.price/item.total_area):'';
+            const price_metr = (parseInt(item.price) > 0 && parseInt(item.total_area))?Math.ceil(item.price/item.total_area).toString():'';
             data_array[i] = [
               item.city_area, //Район города
               item.housing_complex_name, //Название ЖК
