@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM debian:buster-slim
 
 ENV TZ="Asia/Krasnoyarsk"
 ENV CRON_AVITO="0 8 * * 6"
